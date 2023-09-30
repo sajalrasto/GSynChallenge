@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+        stage('Git Clone') {
             steps {
-                checkout scm
+                git credentialsId: 'sajalgitcred', url:  'https://github.com/sajalrasto/GSynChallenge.git'
             }
         }
 
