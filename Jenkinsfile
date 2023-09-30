@@ -29,7 +29,7 @@ pipeline {
         stage('Plan Terraform') {
             steps {
                 // Set the Terraform workspace
-                terraform init -backend-config=backend.tfvars -reconfigure -input=false
+                terraform init -backend-config='backend.tfvars' -reconfigure -input=false
 
                 // Run Terraform plan
                 terraform plan -var-file=variables.tfvars -out=plan.out
