@@ -28,8 +28,8 @@ pipeline {
                 // sh 'sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo'
                 // sh 'sudo yum -y install terraform'
 
-                sh 'wget https://releases.hashicorp.com/terraform/latest/terraform-linux-amd64.zip'
-                sh 'unzip terraform-linux-amd64.zip'
+                sh 'wget https://releases.hashicorp.com/terraform/1.5.7/terraform_1.5.7_linux_amd64.zip'
+                sh 'unzip terraform_1.5.7_linux_amd64.zip'
                 sh 'sudo mv terraform /usr/local/bin/terraform'
             }
         }
