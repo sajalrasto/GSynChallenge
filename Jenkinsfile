@@ -17,7 +17,8 @@ pipeline {
             // when {
             //     // Only run this stage for the master branch
             //     branch 'main'
-            // }
+            // } 
+            
 
             steps {
                 // Download the Terraform binary
