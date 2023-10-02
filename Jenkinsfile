@@ -9,7 +9,9 @@ pipeline {
     stages {
         stage('Git Clone') {
             steps {
-                git credentialsId: 'sajalgitcred', url:  'https://github.com/sajalrasto/GSynChallenge.git'
+                // git credentialsId: 'sajalgitcred', url:  'https://github.com/sajalrasto/GSynChallenge.git'
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'sajalgitcred', url: 'https://github.com/sajalrasto/GSynChallenge.git']])
+
             }
         }
 
@@ -18,7 +20,7 @@ pipeline {
             //     // Only run this stage for the master branch
             //     branch 'main'
             // } 
-            
+
 
             steps {
                 // Download the Terraform binary
