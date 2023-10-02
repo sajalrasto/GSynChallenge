@@ -49,7 +49,7 @@ pipeline {
                 sh 'terraform init -backend-config=backend.tfvars -reconfigure -input=false'
 
                 // Run Terraform plan
-                sh 'terraform plan -var-file=variables.tfvars -out=plan.out'
+                sh 'terraform plan  -out=plan.out'
             }
         }
 
