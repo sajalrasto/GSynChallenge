@@ -16,13 +16,17 @@ pipeline {
 
             steps {
                 // Download the Terraform binary
-                sh 'curl -LO https://releases.hashicorp.com/terraform/latest/terraform-linux-amd64'
+                // sh 'curl -LO https://releases.hashicorp.com/terraform/latest/terraform-linux-amd64'
 
-                // Make the Terraform binary executable
-                sh 'chmod +x terraform-linux-amd64'
+                // // Make the Terraform binary executable
+                // sh 'chmod +x terraform-linux-amd64'
 
-                // Move the Terraform binary to the PATH
-                sh 'sudo mv terraform-linux-amd64 /usr/local/bin/terraform'
+                // // Move the Terraform binary to the PATH
+                // sh 'sudo mv terraform-linux-amd64 /usr/local/bin/terraform'
+
+                sh 'sudo yum install -y yum-utils shadow-utils'
+                sh 'sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo'
+                sh 'sudo yum -y install terraform'
             }
         }
 
