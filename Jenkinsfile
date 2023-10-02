@@ -15,33 +15,33 @@ pipeline {
             }
         }
 
-        stage('Install Terraform') {
-            // when {
-            //     // Only run this stage for the master branch
-            //     branch 'main'
-            // } 
+        // stage('Install Terraform') {
+        //     // when {
+        //     //     // Only run this stage for the master branch
+        //     //     branch 'main'
+        //     // } 
 
 
-            steps {
-                // Download the Terraform binary
-                // sh 'curl -LO https://releases.hashicorp.com/terraform/latest/terraform-linux-amd64'
+        //     steps {
+        //         // Download the Terraform binary
+        //         // sh 'curl -LO https://releases.hashicorp.com/terraform/latest/terraform-linux-amd64'
 
-                // // Make the Terraform binary executable
-                // sh 'chmod +x terraform-linux-amd64'
+        //         // // Make the Terraform binary executable
+        //         // sh 'chmod +x terraform-linux-amd64'
 
-                // // Move the Terraform binary to the PATH
-                // sh 'sudo mv terraform-linux-amd64 /usr/local/bin/terraform'
+        //         // // Move the Terraform binary to the PATH
+        //         // sh 'sudo mv terraform-linux-amd64 /usr/local/bin/terraform'
 
-                // sh 'sudo yum install -y yum-utils shadow-utils'
-                // sh 'sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo'
-                // sh 'sudo yum -y install terraform'
+        //         // sh 'sudo yum install -y yum-utils shadow-utils'
+        //         // sh 'sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo'
+        //         // sh 'sudo yum -y install terraform'
 
-                sh 'wget https://releases.hashicorp.com/terraform/1.5.7/terraform_1.5.7_linux_amd64.zip'
-                sh 'unzip terraform_1.5.7_linux_amd64.zip'
-                sh 'chmod +x terraform'
-                sh 'sudo mv terraform /usr/local/bin/terraform'
-            }
-        }
+        //         sh 'wget https://releases.hashicorp.com/terraform/1.5.7/terraform_1.5.7_linux_amd64.zip'
+        //         sh 'unzip terraform_1.5.7_linux_amd64.zip'
+        //         sh 'chmod +x terraform'
+        //         sh 'sudo mv terraform /usr/local/bin/terraform'
+        //     }
+        // }
 
         stage('Plan Terraform') {
             steps {
