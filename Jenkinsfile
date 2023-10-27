@@ -43,6 +43,21 @@ pipeline {
         //     }
         // }
 
+        stage('AWS CLI install') {
+            steps {
+                // download awscli
+                sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+
+
+
+                // unzip awscli
+                sh 'unzip awscliv2.zip'
+                
+                //install
+                sh 'sudo ./aws/install'
+            }
+        }
+        
         stage('Plan Terraform') {
             steps {
                 // Set the Terraform workspace
