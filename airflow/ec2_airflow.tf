@@ -49,9 +49,9 @@ resource "aws_instance" "airflowinstance" {
     
         
 
-    tags = {
-        Name = "airflow-instance"
-    }
+  tags = {
+      Name = "airflow-instance"
+  }
     
 }
 resource "aws_security_group" "airflowsg" {
