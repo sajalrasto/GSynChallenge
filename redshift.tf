@@ -6,7 +6,7 @@ resource "aws_redshift_cluster" "redcluster" {
   node_type               = "dc2.large"
   number_of_nodes         = 1
   publicly_accessible     = false
-
+  skip_final_snapshot     = true
   vpc_security_group_ids  = [aws_security_group.redclustersg.id]
   cluster_subnet_group_name = aws_redshift_subnet_group.redclustersubnetgroup.name
 }
