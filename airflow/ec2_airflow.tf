@@ -4,7 +4,7 @@ resource "aws_instance" "airflowinstance" {
   key_name      = "sajal-key-pair"  
   security_groups = [aws_security_group.airflowsg.id]
   subnet_id     = aws_subnet.privatesubnet.id
-   user_data = <<EOF
+  user_data = <<EOF
    #!/bin/bash
 
     # Install pwgen
