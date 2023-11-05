@@ -1,4 +1,5 @@
 pipeline {
+    
      parameters {
         booleanParam(name: 'destroy', defaultValue: false, description: 'Destroyes the resources created by the terraform')
     } 
@@ -65,35 +66,35 @@ pipeline {
             //         sh 'sudo ./aws/install'
             //     }
             // }
-            if ( params.destroy == false ) {
-                stage('Plan Terraform') {
-                    steps {
-                        // Set the Terraform workspace
-                        sh 'terraform init -backend-config=backend.tfvars -reconfigure -input=false'
+            stage('Plan Terraform') {
+                steps {
+                    // Set the Terraform workspace
+                    sh 'terraform init -backend-config=backend.tfvars -reconfigure -input=false'
 
-                        // Run Terraform plan
-                        sh 'terraform plan  -out=plan.out'
-                    }
-                }
-
-                stage('Apply Terraform') {
-                    steps {
-                        // Apply the Terraform plan
-                    sh 'terraform apply -input=false -auto-approve'
-                    }
+                    // Run Terraform plan
+                    sh 'terraform plan  -out=plan.out'
                 }
             }
-        
-            else {
-                stage('Terraform Destroy') {
-                    steps {
 
+            stage('Apply Terraform') {
+                if ( params.destroy == false ) {
+                    steps {
+                        // Apply the Terraform plan
+                        
+                    sh 'terraform apply -input=false -auto-approve'
+                    }
+                }else {
+                    steps {
                     // Destroy Terraform
                     sh 'terraform destroy -input=false -auto-approve'
                     }
                 }
+            
+                
             }
+           
         }
+
         post {
             always {
                 // Archive the Terraform state file
