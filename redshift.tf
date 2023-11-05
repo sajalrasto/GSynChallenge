@@ -17,7 +17,7 @@ resource "aws_security_group" "redclustersg" {
 
 resource "aws_redshift_subnet_group" "redclustersubnetgroup" {
   name       = "my-redshift-subnet-group"
-  subnet_ids = aws_subnet.privatesubnet.id
+  subnet_ids = [aws_subnet.privatesubnet.id]
 }
 
 
