@@ -13,6 +13,7 @@ resource "aws_redshift_cluster" "redcluster" {
 
 resource "aws_security_group" "redclustersg" {
   name_prefix = "my-redshift-sg"
+  vpc_id = aws_vpc.vpcnew.id
 }
 
 resource "aws_redshift_subnet_group" "redclustersubnetgroup" {
