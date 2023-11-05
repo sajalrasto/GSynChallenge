@@ -1,5 +1,5 @@
 resource "aws_instance" "airflowinstance" {
-  ami           = "ami-0c94855ba95c71c99" 
+  ami           = "ami-0e83be366243f524a" 
   instance_type = "t2.micro" 
   key_name      = "sajal-key-pair"  
   security_groups = [aws_security_group.airflowsg.id]
