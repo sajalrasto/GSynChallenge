@@ -57,7 +57,7 @@ resource "aws_instance" "airflowinstance" {
 
 resource "aws_security_group" "airflowsg" {
   name_prefix = "my-airflow-sg"
-
+  vpc_id = aws_vpc.vpcnew.id
 }
 
 
