@@ -64,28 +64,28 @@ pipeline {
             //     }
             // }
             
-            // stage('Plan Terraform') {
-            //     steps {
-            //         // Set the Terraform workspace
-            //         sh 'terraform init -backend-config=backend.tfvars -reconfigure -input=false'
+            stage('Plan Terraform') {
+                steps {
+                    // Set the Terraform workspace
+                    sh 'terraform init -backend-config=backend.tfvars -reconfigure -input=false'
 
-            //         // Run Terraform plan
-            //         sh 'terraform plan  -out=plan.out'
-            //     }
-            // }
+                    // Run Terraform plan
+                    sh 'terraform plan  -out=plan.out'
+                }
+            }
 
-            // stage('Apply Terraform') {
-            //     steps {
-            //         // Apply the Terraform plan
-            //     sh 'terraform apply -input=false -auto-approve'
-            //     }
-            // }
-            stage('Terraform Destroy')
-                    steps {
+            stage('Apply Terraform') {
+                steps {
+                    // Apply the Terraform plan
+                sh 'terraform apply -input=false -auto-approve'
+                }
+            }
+            // stage('Terraform Destroy')
+            //         steps {
 
-                    // Destroy Terraform
-                    sh 'terraform destroy'
-                    }
+            //         // Destroy Terraform
+            //         sh 'terraform destroy'
+            //         }
         }
 
         post {
