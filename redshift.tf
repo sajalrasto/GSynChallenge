@@ -2,7 +2,7 @@ resource "aws_redshift_cluster" "redcluster" {
   cluster_identifier      = "my-redshift-cluster"
   database_name           = "mydatabase"
   master_username         = "sajal"
-  master_password         = "sajalgsyn"
+  master_password         = "Sajalgsyn"
   node_type               = "dc2.large"
   number_of_nodes         = 1
   publicly_accessible     = false
