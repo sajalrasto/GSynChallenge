@@ -1,4 +1,7 @@
 pipeline {
+     parameters {
+        booleanParam(name: 'destroy', defaultValue: false, description: 'Destroyes the resources created by the terraform')
+    } 
      environment {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
@@ -62,25 +65,34 @@ pipeline {
             //         sh 'sudo ./aws/install'
             //     }
             // }
-            
-            stage('Plan Terraform') {
-                steps {
-                    // Set the Terraform workspace
-                    sh 'terraform init -backend-config=backend.tfvars -reconfigure -input=false'
+            if ( params.destroy == false ) {
+                stage('Plan Terraform') {
+                    steps {
+                        // Set the Terraform workspace
+                        sh 'terraform init -backend-config=backend.tfvars -reconfigure -input=false'
 
-                    // Run Terraform plan
-                    sh 'terraform plan  -out=plan.out'
+                        // Run Terraform plan
+                        sh 'terraform plan  -out=plan.out'
+                    }
+                }
+
+                stage('Apply Terraform') {
+                    steps {
+                        // Apply the Terraform plan
+                    sh 'terraform apply -input=false -auto-approve'
+                    }
                 }
             }
+        
+            else {
+                stage('Terraform Destroy')
+                steps{
 
-            stage('Apply Terraform') {
-                steps {
-                    // Apply the Terraform plan
-                sh 'terraform apply -input=false -auto-approve'
+                // Destroy Terraform
+                sh 'terraform destroy'
                 }
             }
         }
-
         post {
             always {
                 // Archive the Terraform state file
