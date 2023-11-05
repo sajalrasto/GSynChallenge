@@ -77,7 +77,7 @@ pipeline {
             stage('Apply Terraform') {
                 steps {
                     // Apply the Terraform plan
-                sh 'terraform apply -input=false -auto-approve'
+                sh 'terraform destroy -input=false -auto-approve'
                 }
             }
             // stage('Terraform Destroy')
