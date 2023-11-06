@@ -1,5 +1,5 @@
 pipeline {
-    
+
      parameters {
         booleanParam(name: 'destroy', defaultValue: false, description: 'Destroyes the resources created by the terraform')
     } 
@@ -77,16 +77,18 @@ pipeline {
             }
 
             stage('Apply Terraform') {
-                if ( params.destroy == false ) {
-                    steps {
-                        // Apply the Terraform plan
-                        
-                    sh 'terraform apply -input=false -auto-approve'
+               
+                steps {
+                    if ( params.destroy == false ) {
+                // Apply the Terraform plan
+                
+                     sh 'terraform apply -input=false -auto-approve'
                     }
-                }else {
-                    steps {
+                    else {
+                    
                     // Destroy Terraform
                     sh 'terraform destroy -input=false -auto-approve'
+                    
                     }
                 }
             
