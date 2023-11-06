@@ -1,8 +1,8 @@
 pipeline {
 
-     parameters {
-        booleanParam(name: 'destroy', defaultValue: false, description: 'Destroyes the resources created by the terraform')
-    } 
+    //  parameters {
+    //     booleanParam(name: 'destroy', defaultValue: false, description: 'Destroyes the resources created by the terraform')
+    // } 
      environment {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
@@ -82,7 +82,7 @@ pipeline {
                     if ( params.destroy == false ) {
                 // Apply the Terraform plan
                 
-                     sh 'terraform apply -input=false -auto-approve'
+                    sh 'terraform apply -input=false -auto-approve'
                     }
                     else {
                     
