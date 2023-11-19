@@ -77,19 +77,16 @@ pipeline {
             }
 
             stage('Apply Terraform') {
-               
                 steps {
                     if ( params.destroy == false ) {
-                // Apply the Terraform plan
-                
-                    sh 'terraform apply -input=false -auto-approve'
+                    // Apply the Terraform plan
+                        sh 'terraform apply -input=false -auto-approve'
+                    } else {
+                    
+                    // Destroy Terraform
+                    sh 'terraform destroy -input=false -auto-approve'
+                    
                     }
-                    // else {
-                    
-                    // // Destroy Terraform
-                    // sh 'terraform destroy -input=false -auto-approve'
-                    
-                    // }
                 }
             
                 
