@@ -79,11 +79,11 @@ pipeline {
             stage('Apply Terraform') {
                
                 steps {
-                //     if ( params.destroy == false ) {
-                // // Apply the Terraform plan
+                    if ( params.destroy == false ) {
+                // Apply the Terraform plan
                 
                     sh 'terraform apply -input=false -auto-approve'
-                    // }
+                    }
                     // else {
                     
                     // // Destroy Terraform
