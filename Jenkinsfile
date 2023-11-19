@@ -1,8 +1,8 @@
 pipeline {
 
-    //  parameters {
-    //     booleanParam(name: 'destroy', defaultValue: false, description: 'Destroyes the resources created by the terraform')
-    // } 
+     parameters {
+        booleanParam(name: 'destroy', defaultValue: false, description: 'Destroys the resources created by the terraform')
+    } 
      environment {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
@@ -76,24 +76,24 @@ pipeline {
                 }
             }
 
-            stage('Apply Terraform') {
+            // stage('Apply Terraform') {
                
-                steps {
-                    if ( params.destroy == false ) {
-                // Apply the Terraform plan
+            //     steps {
+            //         if ( params.destroy == false ) {
+            //     // Apply the Terraform plan
                 
-                    sh 'terraform apply -input=false -auto-approve'
-                    }
-                    else {
+            //         sh 'terraform apply -input=false -auto-approve'
+            //         }
+            //         else {
                     
-                    // Destroy Terraform
-                    sh 'terraform destroy -input=false -auto-approve'
+            //         // Destroy Terraform
+            //         sh 'terraform destroy -input=false -auto-approve'
                     
-                    }
-                }
+            //         }
+            //     }
             
                 
-            }
+            // }
            
         }
 
